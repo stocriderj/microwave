@@ -1,5 +1,5 @@
 <h1>Microwave</h1>
-<h2>Just a microwave</h2>
+<h2>"Hmm, new microwave!"</h2>
 
 <!-- Toggling -->
 <div>
