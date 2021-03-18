@@ -8,7 +8,7 @@ var feedback = document.getElementById("feedback");
 var heatBtn = document.getElementById("heatBtn");
    
 var microwave = {
-    foods: ["nothing, oops", "popcorn", "pizza","instant noodles","yesterday's lunch", "leftovers from dinner","the milk you forgot to drink at breakfast"],
+    foods: ["someone's pillow, what a psycho", "popcorn", "pizza","instant noodles","yesterday's lunch", "leftovers from dinner","the milk you forgot to drink at breakfast"],
     on: false,
     toggle: function() {
         this.on = !this.on;
@@ -18,8 +18,9 @@ var microwave = {
             feedback.setAttribute("style", "color:green;");
             feedback.innerHTML = "Now heating " + this.foods[randint(this.foods.length - 1)] + ".";
         } else {
+            let errorMessages = ["You click the button but nothing happens.","Looks like the microwave is taking a nap.","Nothing happens.","The microwave does not respond.","'You can't heat anything if the microwave is off, you idiot!' says a disrespectful, skulking neighbor.","Are you trying to use the microwave when it's not turned on?","Crickets chirp in the background."];
             feedback.setAttribute("style", "color:red;");
-            feedback.innerHTML = "You click the button but nothing happens.";
+            feedback.innerHTML = errorMessages[randint(errorMessages.length - 1)];
         }
     }
 };
@@ -27,9 +28,9 @@ var microwave = {
 toggleBtn.onclick = function() {
     microwave.toggle();
     if (microwave.on) {
-        toggleBtn.innerHTML = "Turn off";
+        toggleBtn.setAttribute("style","background-color:green;")
     } else {
-        toggleBtn.innerHTML = "Turn on";
+        toggleBtn.setAttribute("style","background-color:red;")
     }
 }
    
