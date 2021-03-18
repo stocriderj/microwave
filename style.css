@@ -9,6 +9,15 @@
 button {
     border: 2px solid;
     border-radius: 100px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: gray;
+}
+
+button:active {
+    background-color: black;
 }
 
 button:focus {
@@ -20,5 +29,5 @@ button:focus {
     width: 20px;
     position: relative;
     top: 2px;
-    transition: background-color 0.1s;
+    transition: background-color 0.3s;
 }

@@ -28,9 +28,9 @@ var microwave = {
 toggleBtn.onclick = function() {
     microwave.toggle();
     if (microwave.on) {
-        toggleBtn.setAttribute("style","background-color:green;")
+        toggleBtn.setAttribute("style","background-color:#37D600;")
     } else {
-        toggleBtn.setAttribute("style","background-color:red;")
+        toggleBtn.setAttribute("style","background-color:#8f0101;")
     }
 }
    
