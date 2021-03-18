@@ -4,7 +4,7 @@
 <!-- Toggling -->
 <div>
  <h3>Toggling</h3>
- <p>You can toggle the microwave by clicking the 'Turn on/Turn off' button.</p>
+ <p>Click the circular button to turn the microwave on or off. It should change colors when you click it.</p>
 </div>
 
 <!-- Heating -->
