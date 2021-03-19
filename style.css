@@ -40,11 +40,11 @@ button {
 }
 
 button:hover {
-    background-color: gray;
+    color: gray;
 }
 
 button:active {
-    color: gray;
+    color: black;
 }
 
 button:focus {
