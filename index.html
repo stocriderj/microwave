@@ -9,12 +9,15 @@
         <a href="tutorial.html" target="_blank">User's Manual</a>
         
         <div>
-            <p id="heated">You haven't heated any foods yet.</p>
+            <p id="heated">You haven't heated anything yet!</p>
             <p id="feedback">Hmm, new microwave!</p>
-            <button id="toggleBtn" style="background-color:#8f0101;"></button>
-            <button id="heatBtn">Heat</button>
+            <div id="controls">
+                <button id="toggleBtn" style="background-color:#8f0101;" onclick="microwave.toggle();"></button>
+                <button id="heatBtn" onclick="microwave.heat();">Heat</button>
+            </div>
         </div>
   
         <script src="script.js"></script>
     </body>
 </html>
+

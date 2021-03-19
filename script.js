@@ -29,11 +29,10 @@ var toggleBtn = document.getElementById("toggleBtn");
 var feedback = document.getElementById("feedback");
 var heatBtn = document.getElementById("heatBtn");
 var heatedDisplay = document.getElementById("heated");
-
-var heated = 0;
    
 var microwave = {
     foods: ["a...cake", "popcorn", "pizza","instant noodles","yesterday's lunch", "leftovers from dinner","the milk you forgot to drink at breakfast","corn","your breakfast","Freshly"],
+    heated: 0,
     on: false,
     audio: new Audio("sounds/Microwave-sound.mp3"),
     toggle: function() {
@@ -43,7 +42,7 @@ var microwave = {
         } else {
             toggleBtn.setAttribute("style","background-color:#8f0101;")
             if (!this.audio.paused) {
-                display(feedback,"There was something cooking in there!", "bad");
+                display(feedback,"The microwave was heating something up!", "bad");
             }
             this.audio.pause();
             this.audio.currentTime = 0;
@@ -54,24 +53,20 @@ var microwave = {
             this.audio.play();
             display(feedback, "Heating " + this.foods[randint(this.foods.length - 1)] + ".", "success");
         } else if (!this.audio.paused) {
-            display(feedback,"The microwave is already cooking something!", "bad");
+            display(feedback,"I'm already heating something! Be patient!", "bad");
         } else {
             let errorMessages = ["You click the button but nothing happens.","Looks like the microwave is taking a nap.","Nothing happens.","The microwave does not respond.","'You can't heat anything if the microwave is off, you idiot!' says a disrespectful, skulking neighbor.","Are you trying to use the microwave when it's not turned on?","Crickets chirp in the background."];
             display(feedback, errorMessages[randint(errorMessages.length - 1)], "bad");
         }
         this.audio.onended = function() {
-            display(feedback,"Done!", "success")
-            heated++;
-            display(heatedDisplay, "You've heated " + heated + " foods.", "black");
+            let message = "The microwave has heated";
+            display(feedback,"Done!", "success");
+            microwave.heated++;
+            if (microwave.heated == 1) {
+                display(heatedDisplay, message + " 1 piece of food.");
+            } else {
+                display(heatedDisplay, message + microwave.heated + " pieces of food.");
+            }
         }
     }
 };
-   
-toggleBtn.onclick = function() {
-    microwave.toggle();
-}
-   
-heatBtn.onclick = function() {
-    microwave.heat();
-}
-   
