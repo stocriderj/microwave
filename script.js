@@ -1,3 +1,6 @@
+let feedback = document.getElementById("feedback");
+let heatedDisplay = document.getElementById("heated");
+
 function randint(max) {
     return Math.round(Math.random() * max);
 }
@@ -33,13 +36,13 @@ var foodManager = {
         this.heatedFood = this.foods[randint(this.foods.length - 1)];
     }
 };
-   
-var toggleBtn = document.getElementById("toggleBtn");
-var feedback = document.getElementById("feedback");
-var heatBtn = document.getElementById("heatBtn");
-var heatedDisplay = document.getElementById("heated");
+
    
 var microwave = {
+    errorMessages: ["The microwave does not respond.","You click but nothing happens.","A skulking neighbor taunts you.","Looks like he's taking a nap.","Have you noticed you've put him to sleep?"],
+    displayErrorMessage: function() {
+        display(feedback, this.errorMessages[randint(this.errorMessages.length - 1)], "bad");
+    },
     on: false,
     audio: new Audio("sounds/heating-sound.mp3"),
     toggle: function() {
@@ -63,8 +66,7 @@ var microwave = {
         } else if (!this.audio.paused) {
             display(feedback,`I'm heating your ${foodManager.heatedFood} right now!`, "bad");
         } else {
-            let errorMessages = ["You click the button but nothing happens.","Looks like the microwave is taking a nap.","Nothing happens.","The microwave does not respond.","'You can't heat anything if the microwave is off, you idiot!' says a disrespectful, skulking neighbor.","Are you trying to use the microwave when it's not turned on?","Crickets chirp in the background."];
-            display(feedback, errorMessages[randint(errorMessages.length - 1)], "bad");
+            this.displayErrorMessage();
         }
         this.audio.onended = function() {
             let message = "I've heated ";
@@ -75,6 +77,15 @@ var microwave = {
             } else {
                 display(heatedDisplay, `${message + foodManager.heated} pieces of food.`);
             }
+        }
+    },
+    tellTime: function() {
+        if (this.on) {
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes();
+            display(feedback, `It's ${time}.`);
+        } else {
+            this.displayErrorMessage();
         }
     }
 };
