@@ -15,16 +15,38 @@
 <!-- Heating -->
 <div>
  <h3>-[ Heating ]-</h3>
- <p>Press the <em>Heat</em> button to heat food. Make sure that the power button is green the whole way through.</p>
-  <img width="40" src="https://user-images.githubusercontent.com/78283807/111713748-371d5e00-881e-11eb-8fb6-87d894595950.png"> <!-- On Button Img -->
- <img width="74" src="https://user-images.githubusercontent.com/78283807/111713900-78ae0900-881e-11eb-84ef-8b76ae4d23e6.png"> <!-- Heat Button Img -->
- <h6>Click the <em>heat</em> button to heat food. Make sure the power button is green.</h6>
+ <div>
+  <p>Press <em>"Heat"</em> to tell the microwave to heat food.</p>
+   <img width="74" src="https://user-images.githubusercontent.com/78283807/111713900-78ae0900-881e-11eb-84ef-8b76ae4d23e6.png"> <!-- Heat Button Img -->
+   <h6>Click <em>"Heat"</em> to heat food.</h6>
+  <br>
+ </div>
+ 
+ <div>
+  <p>Make sure you don't turn your microwave off while heating!</p>
+  <img width="400" src="https://user-images.githubusercontent.com/78283807/111836476-5969b700-88c4-11eb-9ab1-577f617f9a2e.png"> <!-- Turn off alert Img -->
+ </div>
+
+ <br>
+
+ 
+ <div>
+  <p>The microwave will let you know if it's heating something.</p>
+  <img width="400" src="https://user-images.githubusercontent.com/78283807/111835941-9d0ff100-88c3-11eb-8659-b4703f2ca277.png"> <!-- Heating Img -->
+ </div>
+
  <br>
  
- <p>The microwave will let you know if it's heating something.</p>
- <img width="400" src="https://user-images.githubusercontent.com/78283807/111714215-2b7e6700-881f-11eb-80ab-a9db4183bb0a.png"> <!-- Heating Img -->
- <br>
+ <div>
+  <p>Be patient! You can only heat one food at a time. The microwave knows that as well.</p>
+  <img width="359" src="https://user-images.githubusercontent.com/78283807/111839372-b0718b00-88c8-11eb-98e0-3cf229db9023.png"> <!-- One at a time Img -->
  
- <p>Be patient! You can only heat one food at a time. You will be notified when the heating is finished. The number of foods you've heated are recorded at the top:</p>
- <img width="300" src="https://user-images.githubusercontent.com/78283807/111713591-f1609580-881d-11eb-9b95-07e8167f542a.png"> <!-- You've heated -- foods Img -->
+  <p>The microwave tells you when he is finished.</p>
+  <img width="420" src="https://user-images.githubusercontent.com/78283807/111839570-ff1f2500-88c8-11eb-9234-13c8c3bc7797.png"> <!-- Done Img -->
+  
+  <p>He also records how many foods he has heated for you.</p>
+  <img width="210" src="https://user-images.githubusercontent.com/78283807/111836022-b749cf00-88c3-11eb-9024-95d999e006d0.png"> <!-- Food Counter Img -->
+ </div>
 </div>
+
+<br><br>
