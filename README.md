@@ -44,9 +44,17 @@
   <p>The microwave tells you when he is finished.</p>
   <img width="420" src="https://user-images.githubusercontent.com/78283807/111839570-ff1f2500-88c8-11eb-9234-13c8c3bc7797.png"> <!-- Done Img -->
   
-  <p>He also records how many foods he has heated for you.</p>
+  <p>He also records how many food items he has heated for you.</p>
   <img width="210" src="https://user-images.githubusercontent.com/78283807/111836022-b749cf00-88c3-11eb-9024-95d999e006d0.png"> <!-- Food Counter Img -->
  </div>
 </div>
 
 <br><br>
+
+<!-- Getting the Time -->
+<div>
+ <h3>-[ Getting the Time ]-</h3>
+ <p>To ask your microwave the time, click on the button displaying <em>"Time"</em>.</p>
+ <img width="80" src="https://user-images.githubusercontent.com/78283807/111844096-54126980-88d0-11eb-9afc-4c753048df12.png">
+ <img width="100" src="https://user-images.githubusercontent.com/78283807/111844226-99369b80-88d0-11eb-9d0b-822a0ed7c263.png">
+</div>
