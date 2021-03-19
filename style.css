@@ -3,6 +3,18 @@
 * {
     font-family: 'Exo 2', sans-serif;
 }
+
+body {
+    margin: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
    
 #feedback {
     transition: color 0.3s;
