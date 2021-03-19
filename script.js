@@ -24,6 +24,15 @@ function display(location, message, color = "normal") {
     }
     location.innerHTML = message;
 }
+
+var foodManager = {
+    foods: ["popcorn", "pizza","instant noodles","leftovers from lunch", "leftovers from dinner","breakfast milk that you forgot to drink","corn","breakfast","Freshly"],
+    heated: 0,
+    heatedFood: "",
+    chooseFood: function() {
+        this.heatedFood = this.foods[randint(this.foods.length - 1)];
+    }
+};
    
 var toggleBtn = document.getElementById("toggleBtn");
 var feedback = document.getElementById("feedback");
@@ -31,8 +40,6 @@ var heatBtn = document.getElementById("heatBtn");
 var heatedDisplay = document.getElementById("heated");
    
 var microwave = {
-    foods: ["popcorn", "pizza","instant noodles","leftovers from lunch", "leftovers from dinner","breakfast milk that you forgot to drink","corn","breakfast","Freshly"],
-    heated: 0,
     on: false,
     audio: new Audio("sounds/heating-sound.mp3"),
     toggle: function() {
@@ -49,24 +56,24 @@ var microwave = {
         }
     },
     heat: function() {
-        var heatedFood = this.foods[randint(this.foods.length - 1)];
         if (this.on && this.audio.paused) {
             this.audio.play();
-            display(feedback, "I'm now heating your " + heatedFood + ".", "success");
+            foodManager.chooseFood();
+            display(feedback, `I'm now heating your ${foodManager.heatedFood}.`, "success");
         } else if (!this.audio.paused) {
-            display(feedback,"I'm heating your" + heatedFood + " right now!", "bad");
+            display(feedback,`I'm heating your ${foodManager.heatedFood} right now!`, "bad");
         } else {
             let errorMessages = ["You click the button but nothing happens.","Looks like the microwave is taking a nap.","Nothing happens.","The microwave does not respond.","'You can't heat anything if the microwave is off, you idiot!' says a disrespectful, skulking neighbor.","Are you trying to use the microwave when it's not turned on?","Crickets chirp in the background."];
             display(feedback, errorMessages[randint(errorMessages.length - 1)], "bad");
         }
         this.audio.onended = function() {
             let message = "I've heated ";
-            display(feedback,"Done! Now take out your " + heatedFood + "; enjoy!", "success");
-            microwave.heated++;
-            if (microwave.heated == 1) {
-                display(heatedDisplay, message + "1 piece of food.");
+            display(feedback,`Done! Now take out your ${foodManager.heatedFood} and enjoy!`, "success");
+            foodManager.heated++;
+            if (foodManager.heated == 1) {
+                display(heatedDisplay, `${message}1 piece of food.`);
             } else {
-                display(heatedDisplay, message + microwave.heated + " pieces of food.");
+                display(heatedDisplay, `${message + foodManager.heated} pieces of food.`);
             }
         }
     }
