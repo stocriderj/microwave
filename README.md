@@ -30,7 +30,7 @@
 
  
  <div>
-  <h4>Gallery</h4>
+  <h4>-[ Gallery ]-</h4>
   <img width="235" src="https://user-images.githubusercontent.com/78283807/111855139-107c2780-88f1-11eb-81fc-a429477a6d34.png">
   <h6>The microwave will let you know if it's heating something.</h6>
  
