@@ -30,24 +30,19 @@
 
  
  <div>
-  <p>The microwave will let you know if it's heating something.</p>
+  <h4>Gallery</h4>
   <img width="235" src="https://user-images.githubusercontent.com/78283807/111855139-107c2780-88f1-11eb-81fc-a429477a6d34.png">
-
- </div>
-
- <br>
+  <h6>The microwave will let you know if it's heating something.</h6>
  
- <div>
-  <p>Be patient! You can only heat one food at a time. The microwave knows that as well.</p>
   <img width="256" src="https://user-images.githubusercontent.com/78283807/111855081-b5e2cb80-88f0-11eb-8ae6-76271183eebb.png">
+  <h6>Be patient! You can only heat one food at a time. The microwave knows that as well.</h6>
  
-  <p>The microwave tells you when he is finished.</p>
   <img width="248" src="https://user-images.githubusercontent.com/78283807/111855108-e7f42d80-88f0-11eb-82ef-2fc2d1064216.png">
+  <h6>The microwave tells you when he is finished.</h6>
 
   
-  <p>He also records how many food items he has heated for you.</p>
   <img width="205" src="https://user-images.githubusercontent.com/78283807/111855124-ff331b00-88f0-11eb-910b-4a72d5a6be7b.png">
-
+  <h6>He also records how many food items he has heated for you.</h6>
  </div>
 </div>
 
