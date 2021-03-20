@@ -1,8 +1,6 @@
 let feedback = document.getElementById("feedback");
 let heatedDisplay = document.getElementById("heated");
 
-localStorage.heatedStorage = "0";
-
 function randint(max) {
     return Math.round(Math.random() * max);
 }
@@ -61,17 +59,9 @@ var foodManager = {
 };
 
 function displayHeated() {
-    if (localStorage.heatedStorage !== null) {
-        foodManager.heated = parseInt(localStorage.getItem("heatedStorage"));
-    }
-    foodManager.heated++;
-
-    localStorage.heatedStorage = toString(foodManager.heated);
-    console.log("heatedStorage:" + localStorage.heatedStorage);
-    console.log("heated:" + foodManager.heated);
-
     let message = "I've heated ";
     display(feedback,`Done! Now take out your ${foodManager.heatedFood} and enjoy!`, "success");
+    foodManager.heated++;
     if (foodManager.heated == 1) {
         display(heatedDisplay, `${message}1 piece of food.`);
     } else {
