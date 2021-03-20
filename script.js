@@ -1,28 +1,7 @@
-function setCookie(name, value, expire) {
-    var d = new Date();
-    d.setTime(d.getTime() + (expire*24*60*60*1000));
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-
 let feedback = document.getElementById("feedback");
 let heatedDisplay = document.getElementById("heated");
+
+localStorage.heatedStorage = "0";
 
 function randint(max) {
     return Math.round(Math.random() * max);
@@ -81,22 +60,24 @@ var foodManager = {
     }
 };
 
-function displayHeated(plus = false) {
-    setCookie("heated",foodManager.heated,365);
-    var heatedC = getCookie("heated");
+function displayHeated() {
+    if (localStorage.heatedStorage !== null) {
+        foodManager.heated = parseInt(localStorage.getItem("heatedStorage"));
+    }
+    foodManager.heated++;
+
+    localStorage.heatedStorage = toString(foodManager.heated);
+    console.log("heatedStorage:" + localStorage.heatedStorage);
+    console.log("heated:" + foodManager.heated);
+
     let message = "I've heated ";
-    if (plus) {
-        foodManager.heated++;
+    display(feedback,`Done! Now take out your ${foodManager.heatedFood} and enjoy!`, "success");
+    if (foodManager.heated == 1) {
+        display(heatedDisplay, `${message}1 piece of food.`);
+    } else {
+        display(heatedDisplay, `${message + foodManager.heated} pieces of food.`);
     }
-    if (heatedC !== 0) {
-        display(feedback,`Done! Now take out your ${foodManager.heatedFood} and enjoy!`, "success");
-        if (foodManager.heated == 1) {
-            display(heatedDisplay, `${message}1 piece of food.`);
-        } else {
-            display(heatedDisplay, `${message + foodManager.heated} pieces of food.`);
-        }
-    }
-}
+}    
 
    
 var microwave = {
@@ -110,7 +91,6 @@ var microwave = {
         this.on = !this.on;
         if (this.on) {
             toggleBtn.setAttribute("style","background-color:#37D600;");
-            displayHeated();
             if (foodManager.heated > 0) {
                 setColors.normal(heatedDisplay)
             }
@@ -131,7 +111,7 @@ var microwave = {
             display(feedback,`I'm already heating your ${foodManager.heatedFood}!`, "bad");
         }
         this.audio.onended = function() {
-            displayHeated(true);
+            displayHeated();
         }
     },
     tellTime: function() {
