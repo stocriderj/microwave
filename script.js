@@ -71,10 +71,6 @@ function displayHeated() {
 
    
 var microwave = {
-    errorMessages: ["The microwave does not respond.","You click but nothing happens.","A skulking neighbor taunts you.","Looks like he's taking a nap.","Have you noticed you've put him to sleep?"],
-    displayErrorMessage: function() {
-        display(feedback, this.errorMessages[randint(this.errorMessages.length - 1)], "bad");
-    },
     on: false,
     audio: new Audio("sounds/heating-sound.mp3"),
     toggle: function() {
