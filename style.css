@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Jura:wght@700&display=swap');
 
 * {
     font-family: 'Exo 2', sans-serif;
@@ -8,6 +8,21 @@ body {
     margin: 40px;
 }
 
+::selection {
+    color: rgb(184, 184, 184);
+    background: url(images/highlightPic.jpeg);
+    border-radius: 10px;
+    text-shadow: 2px 2px rgba(139, 139, 139, 0.185);
+}
+
+:focus {
+    outline: none;
+}
+
+div {
+    margin: 10px 0px 10px 0px;
+}
+
 a {
     text-decoration: none;
 }
@@ -15,11 +30,28 @@ a {
 a:hover {
     text-decoration: underline;
 }
-   
-#feedback {
+
+#display {
+    text-align: center;
+    font-weight: 1000;
+    font-family: 'Jura', sans-serif;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 250px;
+    height: 100px;
+}
+
+#feedback, #heated {
     transition: color 0.3s;
 }
 
+/* Controls */
+#controls button {
+    display: inline;
+}
+
+/* Buttons */
 button {
     border: 2px solid;
     border-radius: 100px;
@@ -27,21 +59,17 @@ button {
 }
 
 button:hover {
-    background-color: gray;
+    color: gray;
 }
 
 button:active {
-    background-color: black;
+    color: black;
 }
 
-button:focus {
-    outline: none;
-}
-
+/* Power Button */
 #toggleBtn {
     height: 20px;
     width: 20px;
-    position: relative;
-    top: 2px;
+    border-radius: 100px;
     transition: background-color 0.3s;
 }

@@ -6,15 +6,22 @@
     </head>
     <body>
         <h1>The Microwave</h1>
-        <a href="https://github.com/Stockriderj/Microwave/blob/main/README.md" target="_blank">User's Manual</a>
+        <p>By Stockriderj/JacksonLens</p>
+        <h2><a href="tutorial.html" target="_blank">User's Manual</a></h2>
         
         <div>
-            <p id="heated">You haven't heated any foods yet.</p>
-            <p id="feedback">Hmm, new microwave!</p>
-            <button id="toggleBtn" style="background-color:#8f0101;"></button>
-            <button id="heatBtn">Heat</button>
+            <div id="display">
+                <p id="heated">I haven't heated anything yet.</p>
+                <p id="feedback">Hmm, new microwave!</p>
+            </div>
+            <div id="controls">
+                <button id="toggleBtn" style="background-color:#8f0101;" onclick="microwave.toggle();"></button>
+                <button id="heatBtn" onclick="microwave.heat();">Heat</button>
+                <button id="timeBtn" onclick="microwave.tellTime();">Time</button>
+            </div>
         </div>
   
         <script src="script.js"></script>
     </body>
 </html>
+

@@ -1,16 +1,59 @@
+function setCookie(name, value, expire) {
+    var d = new Date();
+    d.setTime(d.getTime() + (expire*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+let feedback = document.getElementById("feedback");
+let heatedDisplay = document.getElementById("heated");
+
 function randint(max) {
     return Math.round(Math.random() * max);
 }
 
+function wait() {
+    var waste = "waste";
+    waste += "this does nothing stop reading this";
+}
+
 var setColors = {
+    off: function(location) {
+        location.setAttribute("style","color:black");
+
+    },
+    animate: function(location, color) {
+        console.log('before');
+        this.off(location);
+        setTimeout(function() {
+            location.setAttribute("style","color:" + color)
+            console.log("after");
+        },500);
+    },
     success: function(location) {
-        location.setAttribute("style","color: green");
+        this.animate(location, "#00A052");
     },
     bad: function(location) {
-        location.setAttribute("style","color:red");
+        this.animate(location, "red");
     },
     normal: function(location) {
-        location.setAttribute("style","color:black");
+        this.animate(location, "#0095B6");
     }
 }
 
@@ -21,57 +64,80 @@ function display(location, message, color = "normal") {
         setColors.bad(location);
     } else if (color == "normal") {
         setColors.normal(location);
+    } else if (color == "off") {
+        setColors.off(location);
     }
-    location.innerHTML = message;
+    setTimeout(function() {
+        location.innerHTML = message;
+    },500);
 }
-   
-var toggleBtn = document.getElementById("toggleBtn");
-var feedback = document.getElementById("feedback");
-var heatBtn = document.getElementById("heatBtn");
-var heatedDisplay = document.getElementById("heated");
 
-var heated = 0;
+var foodManager = {
+    foods: ["popcorn", "pizza","instant noodles","leftovers from lunch", "leftovers from dinner","breakfast milk","corn","breakfast","Freshly"],
+    heated: 0,
+    heatedFood: "",
+    chooseFood: function() {
+        this.heatedFood = this.foods[randint(this.foods.length - 1)];
+    }
+};
+
+function displayHeated(plus = false) {
+    setCookie("heated",foodManager.heated,365);
+    var heatedC = getCookie("heated");
+    let message = "I've heated ";
+    if (plus) {
+        foodManager.heated++;
+    }
+    if (heatedC !== 0) {
+        display(feedback,`Done! Now take out your ${foodManager.heatedFood} and enjoy!`, "success");
+        if (foodManager.heated == 1) {
+            display(heatedDisplay, `${message}1 piece of food.`);
+        } else {
+            display(heatedDisplay, `${message + foodManager.heated} pieces of food.`);
+        }
+    }
+}
+
    
 var microwave = {
-    foods: ["a...cake", "popcorn", "pizza","instant noodles","yesterday's lunch", "leftovers from dinner","the milk you forgot to drink at breakfast","corn","your breakfast","Freshly"],
+    errorMessages: ["The microwave does not respond.","You click but nothing happens.","A skulking neighbor taunts you.","Looks like he's taking a nap.","Have you noticed you've put him to sleep?"],
+    displayErrorMessage: function() {
+        display(feedback, this.errorMessages[randint(this.errorMessages.length - 1)], "bad");
+    },
     on: false,
-    audio: new Audio("sounds/Microwave-sound.mp3"),
+    audio: new Audio("sounds/heating-sound.mp3"),
     toggle: function() {
         this.on = !this.on;
         if (this.on) {
-            toggleBtn.setAttribute("style","background-color:#37D600;")
-        } else {
-            toggleBtn.setAttribute("style","background-color:#8f0101;")
-            if (!this.audio.paused) {
-                display(feedback,"There was something cooking in there!", "bad");
+            toggleBtn.setAttribute("style","background-color:#37D600;");
+            displayHeated();
+            if (foodManager.heated > 0) {
+                setColors.normal(heatedDisplay)
             }
+        } else {
+            toggleBtn.setAttribute("style","background-color:#8f0101;");
             this.audio.pause();
             this.audio.currentTime = 0;
+            setColors.off(heatedDisplay);
+            setColors.off(feedback);
         }
     },
     heat: function() {
         if (this.on && this.audio.paused) {
             this.audio.play();
-            display(feedback, "Heating " + this.foods[randint(this.foods.length - 1)] + ".", "success");
+            foodManager.chooseFood();
+            display(feedback, `I'm now heating your ${foodManager.heatedFood}.`, "success");
         } else if (!this.audio.paused) {
-            display(feedback,"The microwave is already cooking something!", "bad");
-        } else {
-            let errorMessages = ["You click the button but nothing happens.","Looks like the microwave is taking a nap.","Nothing happens.","The microwave does not respond.","'You can't heat anything if the microwave is off, you idiot!' says a disrespectful, skulking neighbor.","Are you trying to use the microwave when it's not turned on?","Crickets chirp in the background."];
-            display(feedback, errorMessages[randint(errorMessages.length - 1)], "bad");
+            display(feedback,`I'm already heating your ${foodManager.heatedFood}!`, "bad");
         }
         this.audio.onended = function() {
-            display(feedback,"Done!", "success")
-            heated++;
-            display(heatedDisplay, "You've heated " + heated + " foods.", "black");
+            displayHeated(true);
+        }
+    },
+    tellTime: function() {
+        if (this.on) {
+            var time = (new Date()).toTimeString().substr(0,5);
+            display(feedback, `The time is ${time}.`);
         }
     }
 };
-   
-toggleBtn.onclick = function() {
-    microwave.toggle();
-}
-   
-heatBtn.onclick = function() {
-    microwave.heat();
-}
-   
