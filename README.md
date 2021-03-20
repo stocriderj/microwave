@@ -1,5 +1,4 @@
-<h1>Microwave</h1>
-<h2>"Hmm, new microwave!"</h2>
+<h1><a href="https://stockriderj.github.io/microwave">Microwave</a></h1>
 
 <!-- Toggling -->
 <div>
