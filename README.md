@@ -24,7 +24,6 @@
  
  <div>
   <p>Make sure you don't turn your microwave off while heating!</p>
-  <img width="400" src="https://user-images.githubusercontent.com/78283807/111836476-5969b700-88c4-11eb-9ab1-577f617f9a2e.png"> <!-- Turn off alert Img -->
  </div>
 
  <br>
@@ -32,20 +31,23 @@
  
  <div>
   <p>The microwave will let you know if it's heating something.</p>
-  <img width="400" src="https://user-images.githubusercontent.com/78283807/111835941-9d0ff100-88c3-11eb-8659-b4703f2ca277.png"> <!-- Heating Img -->
+  <img width="235" src="https://user-images.githubusercontent.com/78283807/111855139-107c2780-88f1-11eb-81fc-a429477a6d34.png">
+
  </div>
 
  <br>
  
  <div>
   <p>Be patient! You can only heat one food at a time. The microwave knows that as well.</p>
-  <img width="359" src="https://user-images.githubusercontent.com/78283807/111839372-b0718b00-88c8-11eb-98e0-3cf229db9023.png"> <!-- One at a time Img -->
+  <img width="256" src="https://user-images.githubusercontent.com/78283807/111855081-b5e2cb80-88f0-11eb-8ae6-76271183eebb.png">
  
   <p>The microwave tells you when he is finished.</p>
-  <img width="420" src="https://user-images.githubusercontent.com/78283807/111839570-ff1f2500-88c8-11eb-9234-13c8c3bc7797.png"> <!-- Done Img -->
+  <img width="248" src="https://user-images.githubusercontent.com/78283807/111855108-e7f42d80-88f0-11eb-82ef-2fc2d1064216.png">
+
   
   <p>He also records how many food items he has heated for you.</p>
-  <img width="210" src="https://user-images.githubusercontent.com/78283807/111836022-b749cf00-88c3-11eb-9024-95d999e006d0.png"> <!-- Food Counter Img -->
+  <img width="205" src="https://user-images.githubusercontent.com/78283807/111855124-ff331b00-88f0-11eb-910b-4a72d5a6be7b.png">
+
  </div>
 </div>
 
@@ -56,5 +58,5 @@
  <h3>-[ Getting the Time ]-</h3>
  <p>To ask your microwave the time, click on the button displaying <em>"Time"</em>.</p>
  <img width="80" src="https://user-images.githubusercontent.com/78283807/111844096-54126980-88d0-11eb-9afc-4c753048df12.png">
- <img width="100" src="https://user-images.githubusercontent.com/78283807/111844226-99369b80-88d0-11eb-9d0b-822a0ed7c263.png">
+ <img width="132" src="https://user-images.githubusercontent.com/78283807/111855013-60a6ba00-88f0-11eb-9c8c-376665881fd9.png">
 </div>
