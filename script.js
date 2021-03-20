@@ -5,15 +5,32 @@ function randint(max) {
     return Math.round(Math.random() * max);
 }
 
+function wait() {
+    var waste = "waste";
+    waste += "this does nothing stop reading this";
+}
+
 var setColors = {
+    off: function(location) {
+        location.setAttribute("style","color:black");
+
+    },
+    animate: function(location, color) {
+        console.log('before');
+        this.off(location);
+        setTimeout(function() {
+            location.setAttribute("style","color:" + color)
+            console.log("after");
+        },500);
+    },
     success: function(location) {
-        location.setAttribute("style","color: green");
+        this.animate(location, "#00A052");
     },
     bad: function(location) {
-        location.setAttribute("style","color:red");
+        this.animate(location, "red");
     },
     normal: function(location) {
-        location.setAttribute("style","color:black");
+        this.animate(location, "#0095B6");
     }
 }
 
@@ -24,12 +41,17 @@ function display(location, message, color = "normal") {
         setColors.bad(location);
     } else if (color == "normal") {
         setColors.normal(location);
+    } else if (color == "off") {
+        setColors.off(location);
     }
-    location.innerHTML = message;
+    setTimeout(function() {
+        location.innerHTML = message;
+    },500);
+    
 }
 
 var foodManager = {
-    foods: ["popcorn", "pizza","instant noodles","leftovers from lunch", "leftovers from dinner","breakfast milk that you forgot to drink","corn","breakfast","Freshly"],
+    foods: ["popcorn", "pizza","instant noodles","leftovers from lunch", "leftovers from dinner","breakfast milk","corn","breakfast","Freshly"],
     heated: 0,
     heatedFood: "",
     chooseFood: function() {
@@ -48,14 +70,16 @@ var microwave = {
     toggle: function() {
         this.on = !this.on;
         if (this.on) {
-            toggleBtn.setAttribute("style","background-color:#37D600;")
-        } else {
-            toggleBtn.setAttribute("style","background-color:#8f0101;")
-            if (!this.audio.paused) {
-                display(feedback,"The microwave was heating something up!", "bad");
+            toggleBtn.setAttribute("style","background-color:#37D600;");
+            if (foodManager.heated > 0) {
+                setColors.normal(heatedDisplay)
             }
+        } else {
+            toggleBtn.setAttribute("style","background-color:#8f0101;");
             this.audio.pause();
             this.audio.currentTime = 0;
+            setColors.off(heatedDisplay);
+            setColors.off(feedback);
         }
     },
     heat: function() {
@@ -64,9 +88,7 @@ var microwave = {
             foodManager.chooseFood();
             display(feedback, `I'm now heating your ${foodManager.heatedFood}.`, "success");
         } else if (!this.audio.paused) {
-            display(feedback,`I'm heating your ${foodManager.heatedFood} right now!`, "bad");
-        } else {
-            this.displayErrorMessage();
+            display(feedback,`I'm already heating your ${foodManager.heatedFood}!`, "bad");
         }
         this.audio.onended = function() {
             let message = "I've heated ";
@@ -83,9 +105,7 @@ var microwave = {
         if (this.on) {
             var today = new Date();
             var time = today.getHours() + ":" + today.getMinutes();
-            display(feedback, `It's ${time}.`);
-        } else {
-            this.displayErrorMessage();
+            display(feedback, `The time is ${time}.`);
         }
     }
 };

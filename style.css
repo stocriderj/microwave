@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Jura:wght@700&display=swap');
 
 * {
     font-family: 'Exo 2', sans-serif;
@@ -30,8 +30,19 @@ a {
 a:hover {
     text-decoration: underline;
 }
-   
-#feedback {
+
+#display {
+    text-align: center;
+    font-weight: 1000;
+    font-family: 'Jura', sans-serif;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 250px;
+    height: 100px;
+}
+
+#feedback, #heated {
     transition: color 0.3s;
 }
 
