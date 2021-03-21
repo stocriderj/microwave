@@ -95,7 +95,7 @@ var microwave = {
         if (this.on && this.audio.paused) {
             this.audio.play();
             foodManager.chooseFood();
-            oven.setAttribute("style","background-color:#FF8700;");
+            oven.setAttribute("style","background-color:#F09D4B;");
             display(feedback, `I'm now heating your ${foodManager.heatedFood}.`, "success");
         } else if (!this.audio.paused) {
             display(feedback,`I'm already heating your ${foodManager.heatedFood}!`, "bad");
