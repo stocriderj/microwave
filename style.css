@@ -36,26 +36,6 @@ a:active {
     text-shadow: 2px 2px gray;
 }
 
-#display {
-    text-align: center;
-    font-weight: 1000;
-    font-family: 'Jura', sans-serif;
-    background-color: black;
-    border-radius: 10px;
-    padding: 10px;
-    width: 250px;
-    height: 100px;
-}
-
-#feedback, #heated {
-    transition: color 0.3s;
-}
-
-/* Controls */
-#controls button {
-    display: inline;
-}
-
 /* Buttons */
 button {
     border: 2px solid;
@@ -69,6 +49,50 @@ button:hover {
 
 button:active {
     color: black;
+}
+
+/* Microwave */
+#microwave {
+    background-color: gray;
+    padding: 30px;
+    width: 600px;
+    height: 300px;
+    border: 20px solid rgb(185, 185, 185);
+    border-radius: 50px;
+}
+
+/* Oven Part of Microwave */
+#oven {
+    float: left;
+    background-color: rgb(49, 49, 49);
+    border-radius: 10px;
+    width: 350px;
+    height: 280px;
+    transition: background-color 0.2s;
+}
+
+/* Screen */
+#screen {
+    float: right;
+    text-align: center;
+    font-weight: 1000;
+    font-family: 'Jura', sans-serif;
+    background-color: black;
+    border-radius: 10px;
+    padding: 5px;
+    width: 210px;
+    height: 270px;
+}
+
+#feedback, #heated {
+    transition: color 0.3s;
+}
+
+
+/* Screen Buttons */
+#screen button {
+    position: relative;
+    top: 100px;
 }
 
 /* Power Button */

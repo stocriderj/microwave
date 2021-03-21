@@ -1,5 +1,6 @@
 let feedback = document.getElementById("feedback");
 let heatedDisplay = document.getElementById("heated");
+let oven = document.getElementById("oven");
 
 function randint(max) {
     return Math.round(Math.random() * max);
@@ -60,6 +61,7 @@ var foodManager = {
 
 function displayHeated() {
     let message = "I've heated ";
+    oven.setAttribute("style","background-color:rgb(49, 49, 49)");
     display(feedback,`Done! Now take out your ${foodManager.heatedFood} and enjoy!`, "success");
     foodManager.heated++;
     if (foodManager.heated == 1) {
@@ -86,12 +88,14 @@ var microwave = {
             this.audio.currentTime = 0;
             setColors.off(heatedDisplay);
             setColors.off(feedback);
+            oven.setAttribute("style","background-color:rgb(49, 49, 49)");
         }
     },
     heat: function() {
         if (this.on && this.audio.paused) {
             this.audio.play();
             foodManager.chooseFood();
+            oven.setAttribute("style","background-color:#FF8700;");
             display(feedback, `I'm now heating your ${foodManager.heatedFood}.`, "success");
         } else if (!this.audio.paused) {
             display(feedback,`I'm already heating your ${foodManager.heatedFood}!`, "bad");
