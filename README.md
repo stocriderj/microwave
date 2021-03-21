@@ -3,7 +3,7 @@
 
 <br>
 
-<p>Empty slot</p>
+<a href="https://github.com/Stockriderj/microwave/wiki">**Wiki**</a>
 
 <p>Empty slot</p>
 
