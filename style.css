@@ -43,14 +43,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    color: gray;
-}
-
-button:active {
-    color: black;
-}
-
 /* Microwave */
 #microwave {
     background-color: gray;
@@ -93,10 +85,14 @@ button:active {
 #screen button {
     position: relative;
     top: 100px;
+    transition: color,background-color 0.5s;
+    color: gray;
+    background-color: black;
 }
 
 /* Power Button */
 #toggleBtn {
+    color: black;
     height: 20px;
     width: 20px;
     border-radius: 100px;

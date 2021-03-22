@@ -1,6 +1,8 @@
 let feedback = document.getElementById("feedback");
 let heatedDisplay = document.getElementById("heated");
 let oven = document.getElementById("oven");
+let heatBtn = document.getElementById("heatBtn");
+let timeBtn = document.getElementById("timeBtn");
 
 function randint(max) {
     return Math.round(Math.random() * max);
@@ -79,8 +81,10 @@ var microwave = {
         this.on = !this.on;
         if (this.on) {
             toggleBtn.setAttribute("style","background-color:#37D600;");
+            heatBtn.setAttribute("style","background-color:white; color:black");
+            timeBtn.setAttribute("style","background-color:white; color:black");
             if (foodManager.heated > 0) {
-                setColors.normal(heatedDisplay)
+                setColors.normal(heatedDisplay);
             }
         } else {
             toggleBtn.setAttribute("style","background-color:#8f0101;");
@@ -88,6 +92,8 @@ var microwave = {
             this.audio.currentTime = 0;
             setColors.off(heatedDisplay);
             setColors.off(feedback);
+            heatBtn.setAttribute("style","background-color:black; color:gray");
+            timeBtn.setAttribute("style","background-color:black; color:gray");
             oven.setAttribute("style","background-color:rgb(49, 49, 49)");
         }
     },
